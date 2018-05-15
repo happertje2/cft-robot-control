@@ -20,6 +20,7 @@ namespace cft_robot_control
 			Roboclaw roboclaw;
 			roboclaw = new Roboclaw("AUTO", baudRate, roboClawAdress);
 			roboclaw.Open();
+			//test
 
 			//roboclaw = new Roboclaw();
 			//roboclaw.Open("AUTO", ref roboClawModel,roboClawAdress, baudRate);
