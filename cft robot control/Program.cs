@@ -18,11 +18,11 @@ namespace cft_robot_control
             byte roboClawAdress = 128;
 
 			Roboclaw roboclaw;
-			roboclaw = new Roboclaw("AUTO", baudRate, roboClawAdress);
-			roboclaw.Open();
+			//roboclaw = new Roboclaw("AUTO", baudRate, roboClawAdress);
+			//roboclaw.Open();
 
-			//roboclaw = new Roboclaw();
-			//roboclaw.Open("AUTO", ref roboClawModel,roboClawAdress, baudRate);
+			roboclaw = new Roboclaw();
+			roboclaw.Open("AUTO", ref roboClawModel,roboClawAdress, baudRate);
 
 			Console.WriteLine(roboclaw.IsOpen());
         }
