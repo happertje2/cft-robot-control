@@ -21,7 +21,7 @@ namespace cft_robot_control
 			Roboclaw roboclaw1;
 			Roboclaw roboclaw2;
 			roboclaw1 = new Roboclaw("COM3", baudRate, roboClawAdress1);
-			roboclaw2 = new Roboclaw("COM3", baudRate, roboClawAdress2);
+			roboclaw2 = new Roboclaw("COM4", baudRate, roboClawAdress2);
 			roboclaw1.Open();
 			roboclaw2.Open();
 
