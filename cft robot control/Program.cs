@@ -15,16 +15,22 @@ namespace cft_robot_control
         {
 			string roboClawModel = "emty";
             int baudRate = 38400;
-            byte roboClawAdress = 128;
+            byte roboClawAdress1 = 128;
+			byte roboClawAdress2 = 129;
 
-			Roboclaw roboclaw;
-			//roboclaw = new Roboclaw("AUTO", baudRate, roboClawAdress);
-			//roboclaw.Open();
+			Roboclaw roboclaw1;
+			Roboclaw roboclaw2;
+			roboclaw1 = new Roboclaw("COM3", baudRate, roboClawAdress1);
+			roboclaw2 = new Roboclaw("COM3", baudRate, roboClawAdress2);
+			roboclaw1.Open();
+			roboclaw2.Open();
 
-			roboclaw = new Roboclaw();
-			roboclaw.Open("AUTO", ref roboClawModel,roboClawAdress, baudRate);
+			roboclaw2.ST_M1Forward(100);
 
-			Console.WriteLine(roboclaw.IsOpen());
+			//roboclaw = new Roboclaw();
+			//roboclaw.Open("AUTO", ref roboClawModel,roboClawAdress, baudRate);
+
+			Console.WriteLine(roboclaw1.IsOpen());
         }
     }
 }
