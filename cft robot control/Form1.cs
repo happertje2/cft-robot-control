@@ -55,13 +55,13 @@ namespace cft_robot_control
 			if (Globals.ManualControl == true)
 			{
 				Globals.axisController.SetPosR(trackBar1.Value);
-				textBox1.Text = trackBar1.Value.ToString();
+				numericUpDownR.Value = trackBar1.Value;
 			}
 		}
 
-		private void textBox1_TextChanged_1(object sender, EventArgs e)
+		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
 		{
-			Globals.axisController.SetPosR(Convert.ToInt32(textBox1.Text));
+			Globals.axisController.SetPosR(Convert.ToInt32(numericUpDownR.Value));
 		}
 		#endregion
 
@@ -71,13 +71,13 @@ namespace cft_robot_control
 			if (Globals.ManualControl == true)
 			{
 				Globals.axisController.SetPosX(trackBar2.Value);
-				textBox2.Text = trackBar2.Value.ToString();
+				numericUpDownX.Value = trackBar2.Value;
 			}
 		}
 
-		private void textBox2_TextChanged(object sender, EventArgs e)
+		private void numericUpDown2_ValueChanged(object sender, EventArgs e)
 		{
-			Globals.axisController.SetPosX(Convert.ToInt32(textBox2.Text));
+			Globals.axisController.SetPosX(Convert.ToInt32(numericUpDownX.Value));
 		}
 		#endregion
 
@@ -87,13 +87,13 @@ namespace cft_robot_control
 			if (Globals.ManualControl == true)
 			{
 				Globals.axisController.SetPosZ(trackBar3.Value);
-				textBox3.Text = trackBar3.Value.ToString();
+				numericUpDownZ.Value = trackBar3.Value;
 			}
 		}
 
-		private void textBox3_TextChanged(object sender, EventArgs e)
+		private void numericUpDown3_ValueChanged(object sender, EventArgs e)
 		{
-			Globals.axisController.SetPosZ(Convert.ToInt32(textBox3.Text));
+			Globals.axisController.SetPosZ(Convert.ToInt32(numericUpDownZ.Value));
 		}
 		#endregion
 
@@ -103,13 +103,13 @@ namespace cft_robot_control
 			if (Globals.ManualControl == true)
 			{
 				Globals.axisController.SetPosY(trackBar4.Value);
-				textBox4.Text = trackBar4.Value.ToString();
+				numericUpDownY.Value = trackBar4.Value;
 			}
 		}
 
-		private void textBox4_TextChanged(object sender, EventArgs e)
+		private void numericUpDown4_ValueChanged(object sender, EventArgs e)
 		{
-			Globals.axisController.SetPosY(Convert.ToInt32(textBox4.Text));
+			Globals.axisController.SetPosY(Convert.ToInt32(numericUpDownY.Value));
 		}
 		#endregion
 

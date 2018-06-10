@@ -35,6 +35,10 @@
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.button2 = new System.Windows.Forms.Button();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownZ = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownR = new System.Windows.Forms.NumericUpDown();
 			this.YmaxLabel = new System.Windows.Forms.Label();
 			this.YminLabel = new System.Windows.Forms.Label();
 			this.ZmaxLabel = new System.Windows.Forms.Label();
@@ -44,13 +48,9 @@
 			this.RminLabel = new System.Windows.Forms.Label();
 			this.RmaxLabel = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.trackBar4 = new System.Windows.Forms.TrackBar();
 			this.trackBar3 = new System.Windows.Forms.TrackBar();
 			this.trackBar2 = new System.Windows.Forms.TrackBar();
@@ -61,6 +61,10 @@
 			this.tabControl1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.tabPage1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownR)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -130,6 +134,10 @@
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.numericUpDownY);
+			this.tabPage1.Controls.Add(this.numericUpDownZ);
+			this.tabPage1.Controls.Add(this.numericUpDownX);
+			this.tabPage1.Controls.Add(this.numericUpDownR);
 			this.tabPage1.Controls.Add(this.YmaxLabel);
 			this.tabPage1.Controls.Add(this.YminLabel);
 			this.tabPage1.Controls.Add(this.ZmaxLabel);
@@ -139,13 +147,9 @@
 			this.tabPage1.Controls.Add(this.RminLabel);
 			this.tabPage1.Controls.Add(this.RmaxLabel);
 			this.tabPage1.Controls.Add(this.label4);
-			this.tabPage1.Controls.Add(this.textBox4);
 			this.tabPage1.Controls.Add(this.label3);
-			this.tabPage1.Controls.Add(this.textBox3);
 			this.tabPage1.Controls.Add(this.label2);
-			this.tabPage1.Controls.Add(this.textBox2);
 			this.tabPage1.Controls.Add(this.label1);
-			this.tabPage1.Controls.Add(this.textBox1);
 			this.tabPage1.Controls.Add(this.trackBar4);
 			this.tabPage1.Controls.Add(this.trackBar3);
 			this.tabPage1.Controls.Add(this.trackBar2);
@@ -158,6 +162,68 @@
 			this.tabPage1.Text = "manual control";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+			// 
+			// numericUpDownY
+			// 
+			this.numericUpDownY.Location = new System.Drawing.Point(6, 395);
+			this.numericUpDownY.Maximum = new decimal(new int[] {
+            81000,
+            0,
+            0,
+            0});
+			this.numericUpDownY.Name = "numericUpDownY";
+			this.numericUpDownY.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownY.TabIndex = 23;
+			this.numericUpDownY.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+			// 
+			// numericUpDownZ
+			// 
+			this.numericUpDownZ.Location = new System.Drawing.Point(7, 287);
+			this.numericUpDownZ.Maximum = new decimal(new int[] {
+            37000,
+            0,
+            0,
+            0});
+			this.numericUpDownZ.Minimum = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+			this.numericUpDownZ.Name = "numericUpDownZ";
+			this.numericUpDownZ.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownZ.TabIndex = 22;
+			this.numericUpDownZ.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+			this.numericUpDownZ.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+			// 
+			// numericUpDownX
+			// 
+			this.numericUpDownX.Location = new System.Drawing.Point(6, 176);
+			this.numericUpDownX.Maximum = new decimal(new int[] {
+            120000,
+            0,
+            0,
+            0});
+			this.numericUpDownX.Name = "numericUpDownX";
+			this.numericUpDownX.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownX.TabIndex = 21;
+			this.numericUpDownX.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+			// 
+			// numericUpDownR
+			// 
+			this.numericUpDownR.Location = new System.Drawing.Point(7, 67);
+			this.numericUpDownR.Maximum = new decimal(new int[] {
+            360000,
+            0,
+            0,
+            0});
+			this.numericUpDownR.Name = "numericUpDownR";
+			this.numericUpDownR.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownR.TabIndex = 20;
+			this.numericUpDownR.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
 			// 
 			// YmaxLabel
 			// 
@@ -240,14 +306,6 @@
 			this.label4.TabIndex = 11;
 			this.label4.Text = "position";
 			// 
-			// textBox4
-			// 
-			this.textBox4.Location = new System.Drawing.Point(7, 395);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(68, 20);
-			this.textBox4.TabIndex = 10;
-			this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
@@ -256,14 +314,6 @@
 			this.label3.Size = new System.Drawing.Size(43, 13);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "position";
-			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(7, 287);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(68, 20);
-			this.textBox3.TabIndex = 8;
-			this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
 			// 
 			// label2
 			// 
@@ -274,14 +324,6 @@
 			this.label2.TabIndex = 7;
 			this.label2.Text = "position";
 			// 
-			// textBox2
-			// 
-			this.textBox2.Location = new System.Drawing.Point(7, 176);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(68, 20);
-			this.textBox2.TabIndex = 6;
-			this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -291,14 +333,6 @@
 			this.label1.TabIndex = 5;
 			this.label1.Text = "position";
 			this.label1.Click += new System.EventHandler(this.label1_Click);
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(7, 67);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(68, 20);
-			this.textBox1.TabIndex = 4;
-			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
 			// 
 			// trackBar4
 			// 
@@ -380,6 +414,10 @@
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownR)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
@@ -406,13 +444,9 @@
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox textBox4;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Label YmaxLabel;
 		private System.Windows.Forms.Label YminLabel;
 		private System.Windows.Forms.Label ZmaxLabel;
@@ -421,6 +455,10 @@
 		private System.Windows.Forms.Label XmaxLabel;
 		private System.Windows.Forms.Label RminLabel;
 		private System.Windows.Forms.Label RmaxLabel;
+		private System.Windows.Forms.NumericUpDown numericUpDownY;
+		private System.Windows.Forms.NumericUpDown numericUpDownZ;
+		private System.Windows.Forms.NumericUpDown numericUpDownX;
+		private System.Windows.Forms.NumericUpDown numericUpDownR;
 	}
 }
 

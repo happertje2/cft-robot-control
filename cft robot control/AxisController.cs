@@ -20,42 +20,44 @@ namespace cft_robot_control
 		public int ZminPos = 800;
 		public int YminPos = 0;
 
+		public uint maxspeed = 50000;
+
 		public void SetPosR(int position,uint speed)
 		{
-			Globals.roboClaw2.M1SpeedAccelDeccelPosition(0, speed, 0, position, 128);
+			Globals.roboClaw2.M1SpeedAccelDeccelPosition(0, speed, 0, checkIfPosValid(position,RminPos,RmaxPos), 128);
 		}
 
 		public void SetPosR(int position)
 		{
-			Globals.roboClaw2.M1SpeedAccelDeccelPosition(0, 50000, 0, position, 128);
+			SetPosR(position, maxspeed);
 		}
 
 		public void SetPosY(int position, uint speed)
 		{
-			Globals.roboClaw2.M2SpeedAccelDeccelPosition(0, speed, 0, position, 128);
+			Globals.roboClaw2.M2SpeedAccelDeccelPosition(0, speed, 0, checkIfPosValid(position,YminPos,YmaxPos), 128);
 		}
 		public void SetPosY(int position)
 		{
-			Globals.roboClaw2.M2SpeedAccelDeccelPosition(0, 50000, 0, position, 128);
+			SetPosY(position,maxspeed);
 		}
 
 		public void SetPosZ(int position, uint speed)
 		{
-			Globals.roboClaw1.M1SpeedAccelDeccelPosition(0, speed, 0, position, 128);
+			Globals.roboClaw1.M1SpeedAccelDeccelPosition(0, speed, 0, checkIfPosValid(position,ZminPos,ZmaxPos), 128);
 		}
 
 		public void SetPosZ(int position)
 		{
-			Globals.roboClaw1.M1SpeedAccelDeccelPosition(0, 50000, 0, position, 128);
+			SetPosZ(position, maxspeed);
 		}
 
 		public void SetPosX(int position, uint speed)
 		{
-			Globals.roboClaw1.M2SpeedAccelDeccelPosition(0, speed, 0, position, 128);
+			Globals.roboClaw1.M2SpeedAccelDeccelPosition(0, speed, 0, checkIfPosValid(position,XminPos,XmaxPos), 128);
 		}
 		public void SetPosX(int position)
 		{
-			Globals.roboClaw1.M2SpeedAccelDeccelPosition(0, 50000, 0, position, 128);
+			SetPosX(position, maxspeed);
 		}
 
 		public void SetHome()
@@ -78,6 +80,25 @@ namespace cft_robot_control
 		{
 			roboClaw.ST_M1Forward(0);
 			roboClaw.ST_M2Forward(0);
+		}
+
+		private int checkIfPosValid(int position, int min, int max)
+		{
+			if(position > max)
+			{
+				return max;
+			}
+			else
+			{
+				if(position < min)
+				{
+					return min;
+				}
+				else
+				{
+					return position;
+				}
+			}
 		}
 	}
 }
