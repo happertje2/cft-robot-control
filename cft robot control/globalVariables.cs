@@ -13,5 +13,10 @@ namespace cft_robot_control
 		public static Roboclaw roboClaw1;
 		public static Roboclaw roboClaw2;
 		public static DateTime time = new DateTime();
+		public static int encoder1RoboClaw1 = 0;
+		public static AxisController axisController = new AxisController();
+		public static RoboclawConnectionHandler roboclawConnectionHandler = new RoboclawConnectionHandler();
+
+		public static bool ManualControl = true;
 	}
 }

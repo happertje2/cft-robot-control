@@ -20,65 +20,26 @@ namespace cft_robot_control
         }
 
 
-		private int connectedToRoboClaw = 0;
-
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (connectedToRoboClaw == 0)
+			Globals.roboclawConnectionHandler.ToggleRoboclawConnection();
+			if (Globals.roboclawConnectionHandler.connectedToRoboClaw == 1)
 			{
-				Globals.roboClaw1 = connectToRoboClaw(Globals.roboClaw1, 38400, 128, "COM3");
-				Globals.roboClaw2 = connectToRoboClaw(Globals.roboClaw2, 38400, 129, "COM4");
+				ConnectToRoboclawButton.Text = "disconnect";
+				ConnectToRoboclawButton.BackColor = Color.Green;
+				tabControl1.Visible = true;
 			}
-			else if(connectedToRoboClaw == 1)
+			else
 			{
-				disconnectFromRoboclaw(Globals.roboClaw1);
-				disconnectFromRoboclaw(Globals.roboClaw2);
+				ConnectToRoboclawButton.Text = "connect";
+				ConnectToRoboclawButton.BackColor = Color.Red;
+				tabControl1.Visible = false;
 			}
-		}
-
-		private Roboclaw connectToRoboClaw(Roboclaw roboclaw, int baudRate, byte adress, string comport)
-		{
-			roboclaw = new Roboclaw(comport, baudRate, adress);
-			roboclaw.Open();
-			Console.WriteLine("is roboclaw open? " + roboclaw.IsOpen());
-			connectedToRoboClaw = 1;
-			button1.Text = "disconnect";
-			button1.BackColor = Color.Green;
-			tabControl1.Visible = true;
-			return roboclaw;
-		}
-
-		private void disconnectFromRoboclaw(Roboclaw roboclaw)
-		{
-			stopMotors(roboclaw);
-			roboclaw.Close();
-			Console.WriteLine("is roboclaw open? " + roboclaw.IsOpen());
-			connectedToRoboClaw = 0;
-			button1.Text = "connect";
-			button1.BackColor = Color.Red;
-			tabControl1.Visible = false;
 		}
 
 		private void setHome()
 		{
-			Globals.roboClaw1.ST_M1Backward(10);
-			Globals.roboClaw1.ST_M2Backward(100);
-			Globals.roboClaw2.ST_M1Backward(100);
-			Globals.roboClaw2.ST_M2Backward(100);
-			System.Threading.Thread.Sleep(8000);
-			Globals.roboClaw1.SetEncoder1(0);
-			Globals.roboClaw1.SetEncoder2(0);
-			Globals.roboClaw2.SetEncoder1(0);
-			Globals.roboClaw2.SetEncoder2(0);
-			stopMotors(Globals.roboClaw1);
-			stopMotors(Globals.roboClaw2);
-			Console.Beep();
-		}
-
-		private static void stopMotors(Roboclaw roboClaw)
-		{
-			roboClaw.ST_M1Forward(0);
-			roboClaw.ST_M2Forward(0);
+			Globals.axisController.SetHome();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -87,10 +48,93 @@ namespace cft_robot_control
 			Console.WriteLine(DateTime.Now.Ticks);
 		}
 
-		private void textBox1_TextChanged(object sender, EventArgs e)
+
+		#region rotating axis control R
+		private void trackBar1_Scroll(object sender, EventArgs e)
+		{
+			if (Globals.ManualControl == true)
+			{
+				Globals.axisController.SetPosR(trackBar1.Value);
+				textBox1.Text = trackBar1.Value.ToString();
+			}
+		}
+
+		private void textBox1_TextChanged_1(object sender, EventArgs e)
+		{
+			Globals.axisController.SetPosR(Convert.ToInt32(textBox1.Text));
+		}
+		#endregion
+
+		#region total translating axis X
+		private void trackBar2_Scroll(object sender, EventArgs e)
+		{
+			if (Globals.ManualControl == true)
+			{
+				Globals.axisController.SetPosX(trackBar2.Value);
+				textBox2.Text = trackBar2.Value.ToString();
+			}
+		}
+
+		private void textBox2_TextChanged(object sender, EventArgs e)
+		{
+			Globals.axisController.SetPosX(Convert.ToInt32(textBox2.Text));
+		}
+		#endregion
+
+		#region heigth axis Z
+		private void trackBar3_Scroll(object sender, EventArgs e)
+		{
+			if (Globals.ManualControl == true)
+			{
+				Globals.axisController.SetPosZ(trackBar3.Value);
+				textBox3.Text = trackBar3.Value.ToString();
+			}
+		}
+
+		private void textBox3_TextChanged(object sender, EventArgs e)
+		{
+			Globals.axisController.SetPosZ(Convert.ToInt32(textBox3.Text));
+		}
+		#endregion
+
+		#region translating axis Y
+		private void trackBar4_Scroll(object sender, EventArgs e)
+		{
+			if (Globals.ManualControl == true)
+			{
+				Globals.axisController.SetPosY(trackBar4.Value);
+				textBox4.Text = trackBar4.Value.ToString();
+			}
+		}
+
+		private void textBox4_TextChanged(object sender, EventArgs e)
+		{
+			Globals.axisController.SetPosY(Convert.ToInt32(textBox4.Text));
+		}
+		#endregion
+
+		private void panel1_Paint(object sender, PaintEventArgs e)
+		{
+			Console.WriteLine(panel1.PointToScreen(Cursor.Position).X);
+			Console.WriteLine(Cursor.Position);
+		}
+
+		private void mouseDown(object sender, MouseEventArgs e)
+		{
+			if (Globals.ManualControl == true)
+			{
+				Console.WriteLine(panel1.PointToClient(Cursor.Position));
+			}
+		}
+
+		private void label1_Click(object sender, EventArgs e)
 		{
 
-			textBox1.Text = Globals.roboClaw1.GetM1Encoder(
+		}
+
+		private void tabPage1_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
